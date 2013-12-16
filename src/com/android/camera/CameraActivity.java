@@ -20,11 +20,14 @@ import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
+import android.content.ClipData.Item;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -58,10 +61,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ShareActionProvider;
+import android.widget.TextView;
 
 import com.android.camera.app.AppManagerFactory;
 import com.android.camera.app.PlaceholderManager;
@@ -88,7 +94,7 @@ import com.android.camera.util.IntentHelper;
 import com.android.camera.util.PhotoSphereHelper;
 import com.android.camera.util.PhotoSphereHelper.PanoramaViewHelper;
 import com.android.camera.util.UsageStatistics;
-import com.android.camera2.R;
+import com.android.camera2.pico.R;
 
 import java.io.File;
 
@@ -131,6 +137,7 @@ public class CameraActivity extends Activity
 
     // Supported operations at FilmStripView. Different data has different
     // set of supported operations.
+    
     private static final int SUPPORT_DELETE = 1 << 0;
     private static final int SUPPORT_ROTATE = 1 << 1;
     private static final int SUPPORT_INFO = 1 << 2;
@@ -175,6 +182,8 @@ public class CameraActivity extends Activity
     private Menu mActionBarMenu;
     private ViewGroup mUndoDeletionBar;
     private boolean mIsUndoingDeletion = false;
+    
+    public static Context contextOfApplication;
 
     private Uri[] mNfcPushUris = new Uri[1];
 
@@ -1011,14 +1020,21 @@ public class CameraActivity extends Activity
             return false;
         }
     }
+    
+    public static Context getContextOfApplication(){
+        return contextOfApplication;
+    }
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
         GcamHelper.init(getContentResolver());
-
+        contextOfApplication = getApplicationContext();
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.camera_filmstrip);
+        
+        
+        
         mActionBar = getActionBar();
         mActionBar.addOnMenuVisibilityListener(this);
 
@@ -1168,6 +1184,8 @@ public class CameraActivity extends Activity
         getContentResolver().registerContentObserver(
                 MediaStore.Video.Media.EXTERNAL_CONTENT_URI, true,
                 mLocalVideosObserver);
+        
+        
     }
 
     private void setRotationAnimation() {
@@ -1668,4 +1686,10 @@ public class CameraActivity extends Activity
     public CameraModule getCurrentModule() {
         return mCurrentModule;
     }
+    
+    public void more(View view) {
+    	Intent intent = new Intent(CameraActivity.this, OptiMode.class);
+    	startActivity(intent);
+    	finish();
+	}
 }

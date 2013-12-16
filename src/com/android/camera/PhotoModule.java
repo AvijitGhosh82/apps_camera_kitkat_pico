@@ -22,6 +22,7 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -44,6 +45,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.MessageQueue;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -67,7 +69,7 @@ import com.android.camera.util.ApiHelper;
 import com.android.camera.util.CameraUtil;
 import com.android.camera.util.GcamHelper;
 import com.android.camera.util.UsageStatistics;
-import com.android.camera2.R;
+import com.android.camera2.pico.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -1601,6 +1603,18 @@ public class PhotoModule
         setAutoWhiteBalanceLockIfSupported();
         setFocusAreasIfSupported();
         setMeteringAreasIfSupported();
+        
+        Context applicationContext = CameraActivity.getContextOfApplication();
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
+        int contrast = mPrefs.getInt("contrastslide", 5);
+    	int sharpness = mPrefs.getInt("sharpnessslide", 10);
+    	int brightness = mPrefs.getInt("brightnessslide", 3);
+    	int saturation = mPrefs.getInt("saturationslide", 5);
+    	
+        	mParameters.set("contrast",contrast);
+            mParameters.set("sharpness",sharpness);
+            mParameters.set("brightness",brightness);
+            mParameters.set("saturation",saturation);
 
         // Set picture size.
         String pictureSize = mPreferences.getString(

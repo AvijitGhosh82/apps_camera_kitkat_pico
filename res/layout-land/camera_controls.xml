@@ -67,5 +67,16 @@
             android:scaleType="centerInside"
             android:layout_gravity="top|right"
             android:contentDescription="@string/switch_photo_filmstrip" />
+        
+         <ImageButton
+        android:id="@+id/more"
+        android:onClick="more"
+        android:src="@drawable/more"
+        android:background="@null"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="bottom|right"      
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/> 
 
 </com.android.camera.ui.CameraControls>

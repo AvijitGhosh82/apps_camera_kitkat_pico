@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:robobunny="http://robobunny.com">
+    
+     <PreferenceCategory android:title="\n\n" >
+        <com.robobunny.SeekBarPreference
+            android:key="contrastslide"
+            android:title="Chiaroscuro"
+            android:summary="Adjust OptiContrast™"
+            android:defaultValue="5"
+            android:max="10"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""/>
+        <com.robobunny.SeekBarPreference
+            android:key="sharpnessslide"
+            android:title="Image Detail"
+            android:summary="Adjust OptiSharpness™"
+            android:defaultValue="10"
+            android:max="30"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""/>
+        <com.robobunny.SeekBarPreference
+            android:key="brighnessslide"
+            android:title="Lighting"
+            android:summary="Adjust OptiBrightness™"
+            android:defaultValue="3"
+            android:max="6"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""/>
+        <com.robobunny.SeekBarPreference
+            android:key="saturationslide"
+            android:title="Color Saturation"
+            android:summary="Adjust OptiSaturation™"
+            android:defaultValue="5"
+            android:max="10"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Credits">
+        <Preference android:title="Source" android:key="ori" android:summary="GitHub"> 
+            <intent android:action="android.intent.action.VIEW"
+                         android:data="https://github.com/AvijitGhosh82/apps_camera_kitkat_pico" />
+        </Preference>
+        <Preference android:title="Developer" android:key="dev" android:summary="Avijit Ghosh (for Pico Camera)"> 
+              <intent android:action="android.intent.action.VIEW"
+                         android:data="https://www.facebook.com/AvijitGhosh82" />
+        </Preference> 
+    	<Preference android:title="More" android:key="more" android:summary="For more settings and tweaks, buy the full version from the Play Store" >
+    	    <intent android:action="android.intent.action.VIEW"
+                         android:data="https://play.google.com/store/apps/details?id=com.nemesis.cameraholoplus" />
+        </Preference> 
+    </PreferenceCategory>
+    
+</PreferenceScreen>

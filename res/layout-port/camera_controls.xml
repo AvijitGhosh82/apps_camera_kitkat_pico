@@ -32,13 +32,34 @@
             android:layout_gravity="bottom|right"
             android:layout_marginBottom="6dip"
             android:layout_marginRight="-5dip" />
+        
+          <FrameLayout
+         android:orientation="horizontal"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom|right"
+            android:layout_marginBottom="2dip"
+           >
 
         <com.android.camera.ui.PieMenuButton
             android:id="@+id/menu"
             style="@style/SwitcherButton"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="2dip"
+            
             android:contentDescription="@string/accessibility_menu_button" />
+            
+        <ImageButton
+        android:id="@+id/more"
+        android:onClick="more"
+        android:src="@drawable/more"
+        android:background="@null"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="bottom|right"      
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/> 
+        
+        
+        </FrameLayout>
 
         <com.android.camera.ui.ModuleSwitcher
            android:id="@+id/camera_switcher"

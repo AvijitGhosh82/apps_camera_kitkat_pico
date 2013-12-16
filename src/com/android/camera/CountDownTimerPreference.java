@@ -19,7 +19,7 @@ package com.android.camera;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.android.camera2.R;
+import com.android.camera2.pico.R;
 
 public class CountDownTimerPreference extends ListPreference {
     private static final int[] DURATIONS = {

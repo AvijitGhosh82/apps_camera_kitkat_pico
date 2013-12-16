@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.camera2">
+    package="com.android.camera2.pico">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -139,6 +139,16 @@
             android:theme="@style/Theme.Crop"
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
+        
+         <activity
+            android:name="com.android.camera.OptiMode"
+            android:label="OptiMode"     
+            android:logo="@mipmap/ic_launcher_camera"      
+            android:parentActivityName="com.android.camera.CameraActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.android.camera.CameraActivity" />
+         </activity>
 
         <receiver android:name="com.android.camera.DisableCameraReceiver">
             <intent-filter>
